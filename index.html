@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Todo List Practice1</p>
+    <div class = "todo-input-grid">
+    <input type="text" placeholder="Todo name" class = 'js-class'>
+    <input type="date" class = 'js-input-date'>
+    <button class = "add" onclick="
+    addToDo()">Add</button>
+    </div>
+    <div class="todo-grid"></div>
+    <script>
+        
+        let myArr = [
+         ];
+        //let toDo;
+        //let value;
+        function rendering(){
+        let divElement = '';
+        for(let i = 0; i < myArr.length; i++){
+             //console.log(myArr[i]);
+             //toDo =  `<p>${value}</p>`;
+             //console.log(myArr[0]);
+             const toDoObject = myArr[i];
+             console.log(toDoObject);
+             const name  = toDoObject.name;
+             const dueDate = toDoObject.dueDate;
+             const html = `
+                <div>${name}</div>
+                 <div>${dueDate}</div>
+                <button class = 'button' onclick = "
+                myArr.splice(${i} , 1);
+                rendering()">Delete</button>
+                `
+              divElement += html
+
+             
+             
+
+        }
+        //console.log(divElement)
+        document.querySelector('.todo-grid').innerHTML= `${divElement}`;
+    }
+        //toDo = `<p>${value}</p>`
+        //console.log(toDo)
+        function addToDo(){
+            const inputElement = document.querySelector('.js-class');
+            const inputDate = document.querySelector('.js-input-date');
+            let dueDate = inputDate.value;
+            console.log(inputElement)
+            let taskPerform = inputElement.value
+            //console.log(taskPerform)
+            myArr.push({name : taskPerform , dueDate : dueDate  });
+            //console.log(myArr)
+            //document.querySelector('.to-do-show').innerHTML = `${taskPerform}`;
+            inputElement.value = '';
+            rendering();
+            
+            
+            
+        }
+        
+    </script>
+    
+</body>
+
+</html>
